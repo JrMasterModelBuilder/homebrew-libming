@@ -26,8 +26,8 @@ class LibmingStable < Formula
     system "./configure",
       "--disable-dependency-tracking",
       "--disable-silent-rules",
-      "--enable-perl",
-      "--prefix=#{prefix}"
+      "--prefix=#{prefix}",
+      "--enable-perl"
     system "make", "DEBUG=", "install"
   end
 
