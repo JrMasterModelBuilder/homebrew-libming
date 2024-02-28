@@ -25,7 +25,6 @@ class LibmingHead < Formula
       "--disable-dependency-tracking",
       "--disable-silent-rules",
       "--prefix=#{prefix}",
-      "--mandir=#{man}",
       "--enable-perl"
     system "make", "DEBUG=", "install"
   end
