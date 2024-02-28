@@ -15,18 +15,18 @@ Homebrew tap for libming
 
 ## Tap
 
-```
+```sh
 brew tap JrMasterModelBuilder/libming
 ```
 
 ## Install Stable
 
-```
+```sh
 brew install libming-stable
 ```
 
 ## Install Head
 
-```
+```sh
 brew install --HEAD libming-head
 ```
