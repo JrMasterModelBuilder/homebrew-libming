@@ -27,6 +27,7 @@ class LibmingHead < Formula
       "--prefix=#{prefix}",
       "--enable-perl"
     system "make", "DEBUG=", "install"
+    system 'find', "#{prefix}"
   end
 
   test do
