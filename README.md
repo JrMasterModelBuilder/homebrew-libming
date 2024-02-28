@@ -1,2 +1,3 @@
-# homebrew-libming
+# Homebrew libming
+
 Homebrew tap for libming
