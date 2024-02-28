@@ -1,0 +1,26 @@
+name: Latest
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    if: github.repository == 'JrMasterModelBuilder/homebrew-libming'
+
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Latest
+        run: ./test/latest.sh
+
+      - name: Keep Alive
+        uses: gautamkrishnar/keepalive-workflow@v1
+        with:
+          commit_message: ${{ vars.KA_COMMIT_MESSAGE }}
+          committer_username: ${{ vars.KA_COMMIT_USER }}
+          committer_email: ${{ secrets.KA_COMMIT_EMAIL }}
