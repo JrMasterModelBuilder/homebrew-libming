@@ -35,14 +35,14 @@ class LibmingStable < Formula
     (testpath/"test.as").write <<~'EOS'
       trace("test");
     EOS
-    system "makeswf",
-      "-o", "test.swf",
+    system "#{bin}/makeswf",
+      "-o", testpath/"test.swf",
       "-s", "1x1",
       "-r", "30",
       "-v", "5",
       "-c", "-1",
       "-b", "ffffff",
-      "test.as"
+      testpath/"test.as"
     sha256e = "98fd110da0429afc3ec0b9e0ee52bafe47c5995b5bc4691e4f16d3c9ff22f9a5"
     sha256f = Digest::SHA256.hexdigest File.read(testpath/"test.swf")
     assert_equal sha256e, sha256f
