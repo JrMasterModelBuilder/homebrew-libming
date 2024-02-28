@@ -29,7 +29,9 @@ class LibmingStable < Formula
       "--prefix=#{prefix}",
       "--enable-perl"
     system "make", "DEBUG=", "install"
-    system 'find', "#{prefix}"
+    # Homebrew wants different structure than perl make files.
+    system "mkdir", "#{prefix}/share"
+    system "mv", "#{prefix}/man", "#{prefix}/share"
   end
 
   test do
