@@ -23,6 +23,7 @@ class LibmingStable < Formula
   def install
     inreplace "perl_ext/perl_swf.h", "#endif /* PERL_SWF_H_INCLUDED */", <<~'EOS'.strip
       void destroySWFBlock(SWFBlock block);
+      void SWFTextField_addUTF8Chars(SWFTextField field, const char *string);
       #endif /* PERL_SWF_H_INCLUDED */
     EOS
     ENV.deparallelize if OS.linux?
