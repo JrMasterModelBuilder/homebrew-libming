@@ -10,7 +10,6 @@ jobs:
           - host: macos-14
             name: libming-stable
             test: 1
-            args: ''
 
     runs-on: ${{ matrix.config.host }}
 

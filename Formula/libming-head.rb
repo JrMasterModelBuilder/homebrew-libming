@@ -1,7 +1,9 @@
 class LibmingHead < Formula
   desc "SWF output library"
   homepage "https://github.com/libming/libming"
-  head "https://github.com/libming/libming.git"
+  url "https://github.com/JrMasterModelBuilder/homebrew-libming/releases/download/sources/libming-master-2020-07-23-04aee52363688426eab74f5d6180c149654a6473.tar.gz"
+  version "2020-07-23"
+  sha256 "8c5e22906dc5bc3f159975683d4748df338cc0f140447263a001f44dc079f8e6"
   license all_of: ["LGPL-2.1-or-later", "GPL-2.0-or-later"]
 
   depends_on "autoconf" => :build
