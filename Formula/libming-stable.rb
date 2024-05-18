@@ -21,6 +21,10 @@ class LibmingStable < Formula
   conflicts_with "libming-head", because: "head version"
 
   def install
+    inreplace "perl_ext/perl_swf.h", "#endif /* PERL_SWF_H_INCLUDED */", <<~'EOS'.strip
+      void destroySWFBlock(SWFBlock block);
+      #endif /* PERL_SWF_H_INCLUDED */
+    EOS
     ENV.deparallelize if OS.linux?
     system "autoreconf", "-fiv"
     system "./configure",
