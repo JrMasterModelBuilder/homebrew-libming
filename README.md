@@ -28,5 +28,5 @@ brew install libming-stable
 ## Install Head
 
 ```sh
-brew install --HEAD libming-head
+brew install libming-head
 ```
