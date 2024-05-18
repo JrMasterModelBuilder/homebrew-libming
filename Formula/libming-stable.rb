@@ -5,6 +5,7 @@ class LibmingStable < Formula
   version "0.4.8"
   sha256 "2a44cc8b7f6506adaa990027397b6e0f60ba0e3c1fe8c9514be5eb8e22b2375c"
   license all_of: ["LGPL-2.1-or-later", "GPL-2.0-or-later"]
+  revision 1
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
