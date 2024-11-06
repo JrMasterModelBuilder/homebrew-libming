@@ -1,17 +1,27 @@
-name: Stable Ubuntu 22.04
+name: CI
 
-on: push
+on:
+  push:
+  pull_request:
 
 jobs:
-  build:
+  test:
     strategy:
       matrix:
-        config:
-          - host: ubuntu-22.04
-            name: libming-stable
-            test: 1
+        host:
+          - macos-15
+          - macos-14
+          - macos-13
+          - ubuntu-24.04
+          - ubuntu-22.04
+          - ubuntu-20.04
+        name: 
+          - libming-stable
+          - libming-head
 
-    runs-on: ${{ matrix.config.host }}
+    name: ${{ matrix.host }} ${{ matrix.name }}
+
+    runs-on: ${{ matrix.host }}
 
     steps:
       - name: Checkout
@@ -30,17 +40,16 @@ jobs:
         run: brew tap
 
       - name: Info
-        run: brew info "${{ matrix.config.name }}"
+        run: brew info "${{ matrix.name }}"
 
       - name: Install
-        run: brew install -v "${{ matrix.config.name }}"
+        run: brew install -v "${{ matrix.name }}"
 
       - name: Installed
-        run: brew info "${{ matrix.config.name }}"
+        run: brew info "${{ matrix.name }}"
 
       - name: Audit
-        run: brew audit --except=file,specs "${{ matrix.config.name }}"
+        run: brew audit --except=file,specs "${{ matrix.name }}"
 
       - name: Test
-        run: brew test "${{ matrix.config.name }}"
-        if: matrix.config.test == 1
+        run: brew test "${{ matrix.name }}"
