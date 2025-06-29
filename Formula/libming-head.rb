@@ -18,7 +18,7 @@ class LibmingHead < Formula
   uses_from_macos "bison" => :build
   uses_from_macos "flex" => :build
 
-  conflicts_with "libming", because: "homebrew version"
+  # conflicts_with "libming", because: "homebrew version"
   conflicts_with "libming-stable", because: "stable version"
 
   def install
