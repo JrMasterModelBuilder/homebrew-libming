@@ -8,6 +8,7 @@ Homebrew tap for libming
 
 ```sh
 brew tap JrMasterModelBuilder/libming
+brew trust JrMasterModelBuilder/libming
 ```
 
 ## Install Stable
