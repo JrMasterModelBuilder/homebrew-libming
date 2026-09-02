@@ -27,6 +27,8 @@ class LibmingHead < Formula
       void SWFTextField_addUTF8Chars(SWFTextField field, const char *string);
       #endif /* PERL_SWF_H_INCLUDED */
     EOS
+    inreplace "ch/include/blocks/block.h", 'SWFBlock newEmptySWFBlock();', 'SWFBlock newEmptySWFBlock(SWFBlocktype type);'
+    inreplace "src/blocks/block.h", 'SWFBlock newEmptySWFBlock();', 'SWFBlock newEmptySWFBlock(SWFBlocktype type);'
     ENV.deparallelize if OS.linux?
     system "autoreconf", "-fiv"
     system "./configure",
