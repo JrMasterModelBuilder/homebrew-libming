@@ -33,6 +33,9 @@ jobs:
       - name: Homebrew
         uses: Homebrew/actions/setup-homebrew@ceec4e8419bb3c97ce96e9dda7738499ed5f869d # 2026.11.14.1
 
+      - name: Temp Dir
+        run: mkdir /tmp/brewtemp
+
       - name: Tap Dir
         run: mkdir -p "$(brew --repo)/Library/Taps/$(dirname "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')"
 
@@ -46,7 +49,9 @@ jobs:
         run: brew info "${{ matrix.name }}"
 
       - name: Install
-        run: brew install -v "${{ matrix.name }}"
+        run: brew install --verbose --keep-tmp "${{ matrix.name }}"
+        env:
+          HOMEBREW_TEMP: /tmp/brewtemp
 
       - name: Installed
         run: brew info "${{ matrix.name }}"
@@ -56,3 +61,11 @@ jobs:
 
       - name: Test
         run: brew test "${{ matrix.name }}"
+
+      - name: Temp Data
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ${{ matrix.host }} ${{ matrix.name }} brewtemp
+          path: /tmp/brewtemp
+          include-hidden-files: true
